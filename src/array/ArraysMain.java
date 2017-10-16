@@ -5,13 +5,50 @@ import java.util.Arrays;
 public class ArraysMain {
 
 	private int[] testArray;
+	private String[] suits;
+	private String[] values;
+	
+	
 	
 	public ArraysMain() {
-		testArray = new int[50];
-		populate(testArray);
 		
-		countOccurences(testArray,2,12);
-		System.out.println(Arrays.toString(testArray));
+		suits = new String[4];
+		suits[0] = "Diamonds";
+		suits[1] = "Clubs";
+		suits[2] = "Hearts";
+		suits[3] = "Spades";
+		values = new String[13];
+		for(int i=0; i<values.length; i++)
+		{
+			values[i] = ""+(i+1);
+			
+		}
+		values[0] = "Ace";
+		values[12] ="King";
+		values[11] ="Queen";
+		values[10] ="Jack";
+		printDeck();
+		
+		
+		//testArray = new int[50];
+		//populate(testArray);
+		//populate1ToN(testArray);
+		
+		//shuffle(testArray);
+		//countOccurences(testArray,2,12);
+		//System.out.println(Arrays.toString(testArray));
+	}
+	
+	private void printDeck()
+	{
+		for(String suit: suits)
+		{
+			for(String values: values)
+			{
+				System.out.println(values + " of "+suit);
+			}
+		}
+		return deck;
 	}
 	
 	private void countOccurences(int[] arr, int start, int end)
@@ -25,8 +62,30 @@ public class ArraysMain {
 		{
 			System.out.println("The value "+(i+start)+" was rolled "+counter[i]+" times");
 		}
-			
+	}
 	
+	
+	private void shuffle(int[] arr) {
+		for(int i= 0; i<arr.length; i++) 
+		{
+			swap(arr,i,(int)(Math.random()*arr.length));
+		}
+	
+	}
+	
+	private void swap(int[] arr, int i, int j)
+	{
+		int placeholder = arr[i];
+		arr[i] = arr[j];
+		arr[j] = placeholder;
+	}
+	
+	private void populate1ToN(int[] arr)
+	{
+		for(int i=0; i<arr.length; i++)
+		{
+			arr[i]=(i+1);
+		}
 	}
 	
 	
