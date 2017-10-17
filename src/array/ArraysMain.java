@@ -12,32 +12,58 @@ public class ArraysMain {
 	
 	public ArraysMain() {
 		
-		suits = new String[4];
-		suits[0] = "Diamonds";
-		suits[1] = "Clubs";
-		suits[2] = "Hearts";
-		suits[3] = "Spades";
-		values = new String[13];
-		for(int i=0; i<values.length; i++)
-		{
-			values[i] = ""+(i+1);
+		//suits = new String[4];
+		//suits[0] = "Diamonds";
+		//suits[1] = "Clubs";
+		//suits[2] = "Hearts";
+		//suits[3] = "Spades";
+		//values = new String[13];
+		//for(int i=0; i<values.length; i++)
+		//{
+		//	values[i] = ""+(i+1);
 			
-		}
-		values[0] = "Ace";
-		values[12] ="King";
-		values[11] ="Queen";
-		values[10] ="Jack";
-		printDeck();
+		//}
+		//values[0] = "Ace";
+		//values[12] ="King";
+		//values[11] ="Queen";
+		//values[10] ="Jack";
+		//printDeck();
 		
+		warmUpMethods();
 		
-		//testArray = new int[50];
+		//testArray = new int[5];
 		//populate(testArray);
 		//populate1ToN(testArray);
 		
 		//shuffle(testArray);
 		//countOccurences(testArray,2,12);
+		
+		//reverseOrder(testArray);
+		
 		//System.out.println(Arrays.toString(testArray));
 	}
+	
+	private void warmUpMethods() {
+		int[] orderTest = {1,2,3,4,5,6,7,8,9,10};
+		reverseOrder(orderTest);
+		System.out.println(Arrays.toString(orderTest));
+	}
+	
+	
+	private void reverseOrder(int [] arr)
+	{
+		 for(int i=0; i<arr.length/2; i++)
+		 {
+			 int placeholder = arr[i];
+			 
+			 arr[i] = arr[arr.length-1-i];
+			 arr[arr.length-i-1] = placeholder;
+			 
+			 //swap(arr,i,arr.length-1-i);
+		 }
+	
+	}
+	
 	
 	private void printDeck()
 	{
@@ -48,7 +74,7 @@ public class ArraysMain {
 				System.out.println(values + " of "+suit);
 			}
 		}
-		return deck;
+		
 	}
 	
 	private void countOccurences(int[] arr, int start, int end)
