@@ -29,7 +29,9 @@ public class ArraysMain {
 		//values[10] ="Jack";
 		//printDeck();
 		
-		warmUpMethods();
+		//warmUpMethods();
+		
+		
 		
 		//testArray = new int[5];
 		//populate(testArray);
@@ -41,6 +43,17 @@ public class ArraysMain {
 		//reverseOrder(testArray);
 		
 		//System.out.println(Arrays.toString(testArray));
+		
+		//tuesdayMethods(); 
+		testArray = new int[5];
+		testArray[0]=1;
+		testArray[1]=7;
+		testArray[2]=6;
+		testArray[3]=7;
+		testArray[4]=8;
+		//isConsecutive(testArray, 2, 4);
+		
+		longestConsectiveSequence(testArray);
 	}
 	
 	private void warmUpMethods() {
@@ -49,7 +62,73 @@ public class ArraysMain {
 		System.out.println(Arrays.toString(orderTest));
 	}
 	
+	private void tuesdayMethods() 
+	{
+		int[] orderTest = {1,2,3,4,5,6,7,8,9,10};
+		cycleThrough(orderTest, 5);
+		System.out.println(Arrays.toString(orderTest));
+	}
 	
+	private void cycleThrough(int[] orderTest, int n)
+	{
+		for(int i=0; i<n; i++)
+		{
+			frontToBack(orderTest);
+		}
+	}
+
+	private int longestConsectiveSequence(int[] arr)
+	{
+		int max=1;
+		int currCount=1;
+		for(int i=0; i<arr.length; i++)
+		{
+			while(i + currCount  <arr.length && isConsecutive(arr,i,i+currCount))
+			{
+				currCount++;
+			}
+			
+			if(currCount>max)
+			{
+				max = currCount;
+			}
+			i = i + currCount - 1;
+				
+			currCount=1;
+		}	
+		
+		return max;
+	}
+	
+	private boolean isConsecutive(int[] arr, int start, int end)
+	{
+		for(int i=start; i<end; i++)
+		{
+			if(arr[i]+1 != arr[i+1])
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	
+	
+	
+	private void frontToBack(int[] arr)
+	{
+		int placeholder = arr[0];
+		for(int i=0; i<arr.length-1; i++)
+		{	
+			
+			arr[i]=arr[i+1];
+		}
+		arr[arr.length-1]=placeholder;
+		
+	}
+	
+	
+
 	private void reverseOrder(int [] arr)
 	{
 		 for(int i=0; i<arr.length/2; i++)
@@ -62,6 +141,16 @@ public class ArraysMain {
 			 //swap(arr,i,arr.length-1-i);
 		 }
 	
+	}
+	
+	private int[] subArray(int[] arr,int psn,int length)
+	{
+		int[] sub = new int[length];
+		for(int i=0; i<length; i++)
+		{
+			sub[i]=arr[i+psn];
+		}
+		return sub;
 	}
 	
 	
