@@ -4,17 +4,20 @@ public class ObjectMain {
 
 	public ObjectMain() {
 		
-		Person[] people = new Person[12];
+		Object[] people = new Object[12];
 		populate(people);
-		for(Person p:people) 
+		people[0] = new Thing(" toaster oven");
+		for(Object p:people) 
 		{
 			System.out.println(p);
 		}
 		
+		
+		
 		// TODO Auto-generated constructor stub
 	}
 
-	private void populate(Person[] people)
+	private void populate(Object[] people)
 	{
 		for(int i =0; i<people.length; i++)
 		{
