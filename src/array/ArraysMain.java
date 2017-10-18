@@ -7,8 +7,8 @@ public class ArraysMain {
 	private int[] testArray;
 	private String[] suits;
 	private String[] values;
-	
-	
+	private String[] Person;
+	private String Borough;
 	
 	public ArraysMain() {
 		
@@ -45,6 +45,8 @@ public class ArraysMain {
 		//System.out.println(Arrays.toString(testArray));
 		
 		//tuesdayMethods(); 
+		
+		wednesdayMethods();
 		testArray = new int[5];
 		testArray[0]=1;
 		testArray[1]=7;
@@ -53,15 +55,28 @@ public class ArraysMain {
 		testArray[4]=8;
 		//isConsecutive(testArray, 2, 4);
 		
-		longestConsectiveSequence(testArray);
+		
+		
+
 	}
+	
+	
+	private void wednesdayMethods()
+	{
+		int[] diceRolls = new int[10000];
+		populate(diceRolls);
+		int[] data = longestConsecutiveSeqAndIndex(diceRolls);
+		int longest = data[0];
+		System.out.println("The longest sequence is +"+longest+" rolls."+ " It happened on roll #"+data[1]+" the sequence was: "+Arrays.toString(subArray(diceRolls,data[1],data[0]))+".");
+	}
+	
+	
 	
 	private void warmUpMethods() {
 		int[] orderTest = {1,2,3,4,5,6,7,8,9,10};
 		reverseOrder(orderTest);
-		System.out.println(Arrays.toString(orderTest));
-	}
-	
+		System.out.println(longestConsectiveSequence(orderTest));
+	}	
 	private void tuesdayMethods() 
 	{
 		int[] orderTest = {1,2,3,4,5,6,7,8,9,10};
@@ -77,23 +92,57 @@ public class ArraysMain {
 		}
 	}
 
+	/**
+	 * BIG IDEA
+	 * Usually a method return ONE piece of data
+	 * is by using an array, as you see here, a method that
+	 * @param arr
+	 * @return
+	 */
+	
+	
+	private int longestConsecutiveSeqAndIndex(int[] arr)
+	{
+		int[] data = new int[2];
+		
+		int data[0] = 1;
+		int currCount=1;
+		for(int i=0; i<arr.length; i++)
+		{
+			while(i + currCount <arr.length && isConsecutive(arr,i,i+currCount))
+			{
+				currCount++;
+			}	
+			if(currCount>data[0])
+			{
+				data[0] = currCount;
+				data[1]=1;
+			}		
+			else
+			{	
+				currCount=1;		
+			}
+		return data;
+		}
+	}
+	
 	private int longestConsectiveSequence(int[] arr)
 	{
+		
+		
 		int max=1;
 		int currCount=1;
 		for(int i=0; i<arr.length; i++)
 		{
-			while(i + currCount  <arr.length && isConsecutive(arr,i,i+currCount))
+			while(i + currCount <arr.length && isConsecutive(arr,i,i+currCount))
 			{
 				currCount++;
-			}
-			
+			}	
 			if(currCount>max)
 			{
 				max = currCount;
 			}
-			i = i + currCount - 1;
-				
+			i = i + currCount - 1;		
 			currCount=1;
 		}	
 		
@@ -112,9 +161,6 @@ public class ArraysMain {
 		return true;
 	}
 	
-	
-	
-	
 	private void frontToBack(int[] arr)
 	{
 		int placeholder = arr[0];
@@ -124,23 +170,17 @@ public class ArraysMain {
 			arr[i]=arr[i+1];
 		}
 		arr[arr.length-1]=placeholder;
-		
 	}
 	
-	
-
 	private void reverseOrder(int [] arr)
 	{
 		 for(int i=0; i<arr.length/2; i++)
 		 {
 			 int placeholder = arr[i];
-			 
 			 arr[i] = arr[arr.length-1-i];
 			 arr[arr.length-i-1] = placeholder;
-			 
 			 //swap(arr,i,arr.length-1-i);
 		 }
-	
 	}
 	
 	private int[] subArray(int[] arr,int psn,int length)
@@ -153,7 +193,6 @@ public class ArraysMain {
 		return sub;
 	}
 	
-	
 	private void printDeck()
 	{
 		for(String suit: suits)
@@ -163,7 +202,6 @@ public class ArraysMain {
 				System.out.println(values + " of "+suit);
 			}
 		}
-		
 	}
 	
 	private void countOccurences(int[] arr, int start, int end)
@@ -179,13 +217,11 @@ public class ArraysMain {
 		}
 	}
 	
-	
 	private void shuffle(int[] arr) {
 		for(int i= 0; i<arr.length; i++) 
 		{
 			swap(arr,i,(int)(Math.random()*arr.length));
 		}
-	
 	}
 	
 	private void swap(int[] arr, int i, int j)
@@ -203,17 +239,13 @@ public class ArraysMain {
 		}
 	}
 	
-	
 	private void populate(int[] arr)
 	{
 		for(int i=0; i<arr.length; i++)
 		{
 			arr[i] = diceRoll(2);
 		}
-
-		
 	}
-	
 	
 	public void arrayNotes()
 	{
@@ -238,12 +270,10 @@ public class ArraysMain {
 		//object arrays are not populated 
 	}
 	
-	
 	public static void main(String[] agrs)
 	{
 		ArraysMain sample = new ArraysMain();
 	}
-
 	
 	public int diceRoll(int n)
 	{
