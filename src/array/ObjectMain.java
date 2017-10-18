@@ -25,7 +25,23 @@ public class ObjectMain {
 			Person.LAST_MIDDLE,Person.LAST_END);
 			
 			Borough home = randomBorough();
-			people[i] = new Person(firstName,lastName,home);
+			//BIG IDEA:
+			//In an Object array, you can have multiple data types
+			//(This is unlike a primitive array, like int[], boolean[] etc )
+			
+			
+			if(Math.random() < .6)
+			{
+				//60% of times
+				int money = (int)(Math.random()*20+1)*100000;
+				people[i] = new Athlete(firstName,lastName,home,money);
+			}
+			else
+			{
+				//40% of times
+			
+				people[i] = new Person(firstName,lastName,home);
+			}	
 		}
 	}
 	

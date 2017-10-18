@@ -6,11 +6,9 @@ public class Person {
 	public static final String[] FIRST_MIDDLE = {"ala","e","o","anna","ola","av"};
 	public static final String[] FIRST_END = {"n","tt","lius","lion","ck","id"};
 	
-	
 	public static final String[] LAST_START = {"asd","qwe","gh","hgn","asd","vxc","xcv","T"};
 	public static final String[] LAST_MIDDLE = {"k","h","w","t","h","a"};
-	public static final String[] LAST_END = {"f","jh","g","f","ftf"};
-	
+	public static final String[] LAST_END = {"f","jh","g","f","ftf","n"};
 	
 	private String firstName;
 	private String lastName;
