@@ -4,20 +4,56 @@ public class ObjectMain {
 
 	public ObjectMain() {
 		
-		Object[] people = new Object[12];
+		Person[] people = new Person[12];
 		populate(people);
-		people[0] = new Thing(" toaster oven");
-		for(Object p:people) 
+		//people[0] = new Thing(" toaster oven");
+		
+		Person[] group = selectGroup(people, 120);
+		
+		//analyzeCommonalities(people, group);
+		
+		for(Person p: people) 
 		{
+			
+			p.mingle(people);
 			System.out.println(p);
+			p.stateYourFriends(p);
 		}
-		
-		
-		
 		// TODO Auto-generated constructor stub
 	}
-
-	private void populate(Object[] people)
+	
+	private void analyzeCommonalities(Person[] people, Person[] group)
+	{
+		double averageCommonality = 0;
+		double trials = 500;
+		
+		double num = 0;
+		for(int i=0; i<trials; i++)
+		{
+			group = selectGroup(people, people.length);
+			num += countCommonalities(people, group);	
+		}
+		averageCommonality = num/2;
+		
+		
+		System.out.println("After "+trials+" trials, shuffling "+people.length+" people, on average, "+averageCommonality+" people end up in the same position where they started.");
+	}
+	
+	
+	private int countCommonalities(Object[] arr1, Object[] arr2)
+	{
+		int count = 0;
+		for(int i=0; i<arr1.length; i++)
+		{
+			if(arr1[i]==arr2[i])
+			{
+				count++;
+			}
+		}
+		return count;
+	}
+	
+	private void populate(Person[] people)
 	{
 		for(int i =0; i<people.length; i++)
 		{
@@ -47,6 +83,44 @@ public class ObjectMain {
 			}	
 		}
 	}
+	
+	private Person[] selectGroup(Person[] population, int length)
+	{
+		Person[] group = new Person[length];
+		for(int i=0; i<length; i++)
+		{
+			Person anotherRandomPerson = randomPerson(population);
+			while(alreadyContains(group, anotherRandomPerson))
+			{
+				anotherRandomPerson = randomPerson(population);
+			}
+			group[i] = anotherRandomPerson;
+		}
+		return group;
+	}
+	
+	//returns a randomly selected Person from population
+	private Person randomPerson(Person[] population)
+	{
+		int randomNum = (int) Math.random()*population.length;
+		return population[randomNum];
+		
+	}
+	//returns true if population already has p in it
+	private boolean alreadyContains(Person[] population, Person p)
+	{
+		for(int i=0; i<population.length; i++)
+		{
+			if(population[i]==p)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+		
+	
+	
 	
 	private Borough randomBorough()
 	{
