@@ -3,21 +3,14 @@ package array;
 public class ObjectMain {
 
 	public ObjectMain() {
-		
-		Person[] people = new Person[12];
-		populate(people);
 		//people[0] = new Thing(" toaster oven");
-		
-		Person[] group = selectGroup(people, 120);
-		
 		//analyzeCommonalities(people, group);
-		
-		for(Person p: people) 
-		{
-			
+		Person[] people = new Person[3];
+		populate(people);
+		for(Person p: people) {
 			p.mingle(people);
 			System.out.println(p);
-			p.stateYourFriends(p);
+			p.statYourFriends();
 		}
 		// TODO Auto-generated constructor stub
 	}
@@ -25,8 +18,7 @@ public class ObjectMain {
 	private void analyzeCommonalities(Person[] people, Person[] group)
 	{
 		double averageCommonality = 0;
-		double trials = 500;
-		
+		double trials = 500;	
 		double num = 0;
 		for(int i=0; i<trials; i++)
 		{
