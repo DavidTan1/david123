@@ -37,13 +37,28 @@ public class CaveRoom {
 	 */
 	public void setDirections() 
 	{
+		directions = "";
+		boolean doorFound = false;
 		
+		for(int i=0; i<doors.length; i++)
+		{
+			if(doors[i]!=null)
+			{
+				directions = "There is a" +doors[i].getDescription()+"to the "+toDirection(i)+". "+doors[i].getDetails();
+			}
+			
+			if(!doorFound)
+			{
+				directions = "You are trap.";
+			}
+		}	
+	
 	}
 	
 	
 	/**
 	 * converts an integer to a direction:
-	 * 	0->"North"
+	 * 	0->"the North"
 	 * @param dir
 	 * @return
 	 */
