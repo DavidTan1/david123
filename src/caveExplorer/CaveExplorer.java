@@ -13,4 +13,27 @@ public class CaveExplorer {
 	{
 		
 	}
+	
+	public static void main(String[] args)
+	{
+		in = new Scanner(System.in);
+		CaveRoom.setUpCaves();
+		inventory = new Inventory();
+		startExploring();
+	}
+	
+	
+	
+	private static void startExploring()
+	{
+		while(playing)
+		{
+			print(inventory.getDescription());
+			print(currentRoom.getDescription());
+			print(currentRoom.getDirection());
+			print("What will you like to do");
+			
+		}
+	}
 }
+

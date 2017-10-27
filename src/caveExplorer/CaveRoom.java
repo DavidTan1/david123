@@ -16,6 +16,9 @@ public class CaveRoom {
 	public static final int SOUTH = 2;
 	public static final int WEST = 3;
 	
+	
+	
+	
 	public CaveRoom(String description)
 	{
 		this.description = description;
@@ -80,7 +83,22 @@ public class CaveRoom {
 	
 	public static void setUpCaves()
 	{
-		//This is where you edit your caves!!!
+		CaveExplorer.caves = new CaveRoom[5][5];
+		
+		CaveRoom[][] c = CaveExplorer.caves;
+		
+		for(int col = 0; col<c[row].length; col++)
+		{
+			c[row][col] = new CaveRoom("This cave has coordinates "+row+", "+col);
+		}
+		
+		
+		CaveExplorer.currentRoom = c[0][1];
+		CaveExplorer.currentRoom.enter();
+		
+		c[0][1].setConnection(SOUTH, c[1][1], new Door());
+		
+		c[0][1].setConnection(EAST, c[1][2], new Door());
 	}
 	
 	public void goToRoom(int direction)
