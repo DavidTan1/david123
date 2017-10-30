@@ -149,4 +149,7 @@ public class CaveRoom {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
+	public Door getDoor(int direction) {
+		return doors[direction];
+	}
 }
