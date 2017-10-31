@@ -85,7 +85,7 @@ public class CaveRoom {
 		 */
 		goToRoom(direction);
 	}
-	private boolean isValid(String input) {
+	protected boolean isValid(String input) {
 		String accepted = "wasd";
 		return accepted.indexOf(input) != -1 && input.length() == 1;
 				

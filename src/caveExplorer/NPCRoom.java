@@ -25,4 +25,63 @@ public class NPCRoom extends CaveRoom
 	{
 		return npc != null;
 	}
+	public String validMoves()
+	{
+		return "wdase";
+	}
+	public void performAction(int direction)
+	{
+		if(direction == 4)
+		{
+			if(npc != null && npc.isActive())
+			{
+				npc.interact();
+			}
+			else
+			{
+				CaveExplorer.print("There is nothing to interact with.");
+			}
+		}
+		else
+		{
+			CaveExplorer.print("That key does nothing.");
+		}
+	}
+	public String getContents() {
+		if(containsNPC()&&npc.isActive())
+		{
+			return npc.getSymbol();
+		}
+		else
+		{
+			return super.getContents();
+		}
+	}
+	
+	public String getDescription()
+	{
+		
+		if(containsNPC()&&npc.isActive())
+		{
+			return super.getDescription()+"\n"+npc.getDescription();
+		}
+		else
+		{
+			if(containsNPC()&& !npc.getDescription())
+			{
+				
+			}
+		}
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
 }
