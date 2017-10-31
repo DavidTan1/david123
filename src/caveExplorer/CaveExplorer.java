@@ -31,5 +31,7 @@ public class CaveExplorer {
 			currentRoom.interpretInput(in.next());
 		}
 	}
+	
+	
 
 }
