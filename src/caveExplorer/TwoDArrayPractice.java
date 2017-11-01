@@ -13,8 +13,8 @@ public class TwoDArrayPractice {
 	//	drawHorizontalLine(pic,2);
 	//	drawVerticalLine(pic,2);
 	//	drawSlot(pic,4,6);
-		drawBox(pic,5,8);
-		print(pic);
+	//	drawBox(pic,5,8);
+	//	print(pic);
 	}
 
 	private static void drawBox(String[][] pic, int i, int j) {

@@ -80,6 +80,37 @@ public class NPC extends CaveRoom{
 	}
 	public String getSymbol() {
 		// TODO Auto-generated method stub
+		return "P";
+	}
+	public void setPosition(int row, int col)
+	{
+		if(row >=0 && row < floor.length && col >= 0 && col < floor[row].length && floor[row][col] instanceof NPCRoom)	
+		{
+			if(currentRoom != null)
+			{
+				currentRoom.leaveNPC();
+			}
+			
+			
+			currentRow = row;
+			currentCol = col;
+			//cast the CaveRoom to NPCRoom
+			currentRoom = (NPCRoom)floor[row][col];
+		}
+	}
+	public void autoMove() {
+		if(active)
+		{
+			int[] move = calculateMove();
+			int newRow = currentRow + move[0];
+			int newCol = currentCol + move[1];
+			setPosition(newRow, newCol);
+		}
+	}
+	private int[] calculateMove() {
+		int[][] possibleMoves = {{-1,0},{0,1},{1,0},{0,-1}};
+		int index = 
 		return null;
 	}
+	
 }
