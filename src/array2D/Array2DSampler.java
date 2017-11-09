@@ -29,7 +29,7 @@ public class Array2DSampler {
 		//for each style:
 		for(String[] row: pic) 
 		{
-			for(String[] col: row)
+			for(String col: row)
 			{
 				System.out.print(col);
 			}
