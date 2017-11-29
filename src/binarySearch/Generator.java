@@ -1,4 +1,4 @@
-package search;
+package binarySearch;
 
 import java.io.File;
 import java.io.FileWriter;

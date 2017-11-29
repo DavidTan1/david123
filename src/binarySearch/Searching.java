@@ -1,4 +1,4 @@
-package search;
+package binarySearch;
 import java.util.Scanner;
 import java.util.Timer;
 
@@ -58,22 +58,26 @@ public class Searching {
 
 	private static int binarySearch(int[] searchThis, int startIndex, int endIndex, int target) {
 
-		int middle = (startIndex+endIndex+1)/2;
+		int middle = (int)(startIndex+endIndex)/2;
 		
-		if(searchThis[middle] <= target)
+		if(searchThis[middle] < target)
 		{
-			binarySearch(searchThis,  startIndex,  endIndex,  target);
+			return binarySearch(searchThis, middle+1,  endIndex,  target);
 		}
 		
-		if(searchThis[middle] >= target)
+		if(searchThis[middle] > target)
 		{
-			binarySearch(searchThis,  startIndex,  endIndex,  target);
-			
-			
+			return binarySearch(searchThis, startIndex,  middle-1,  target);
 		}
-		
+		if(searchThis[middle]==target)
+		{
+			return middle;
+		}
+		else
+		{
+			
 			return -1;
-		
+		}
 		
 		
 		
@@ -84,7 +88,7 @@ public class Searching {
 		
 		for(int i=0; i<searchThis.length; i++)
 		{
-			if(searchThis[1]==target)
+			if(searchThis[i]==target)
 			{
 				return i;
 			}
