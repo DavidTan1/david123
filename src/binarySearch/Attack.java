@@ -44,4 +44,9 @@ public abstract class Attack implements Battle{
 		 }
 	 
 	 
+	 public void happen()
+	 {
+		 squirtle.setHP(100);
+		 
+	 }
 }

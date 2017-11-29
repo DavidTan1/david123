@@ -42,7 +42,7 @@ public class Pokemon {
 	
 	public void setHP(int newHP)
 	{
-		hp = newHP;
+		hp = newHP; 
 	}
 	
 	public void setPoisoned(boolean b)
